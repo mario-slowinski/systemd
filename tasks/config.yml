@@ -1,0 +1,13 @@
+---
+- name: "Create systemd unit config"
+  ansible.builtin.template:
+    src: unit.ji2
+    dest: "{{ systemd_config['path'] }}/{{ item['name'] }}.{{ item['type'] }}"
+    owner: "{{ systemd_config['owner'] }}"
+    group: "{{ systemd_config['group'] }}"
+    mode: "{{ systemd_config['mode'] }}"
+    setype: "{{ systemd_config['setype'] }}"
+  loop: "{{ systemd_units }}"
+  loop_control:
+    label: "{{ item['name'] }}.{{ item['type'] }}"
+  notify: "Reload systemd"

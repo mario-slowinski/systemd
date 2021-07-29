@@ -1,0 +1,28 @@
+{%- macro option(key,val) -%}
+{%- if val is string -%}
+{{ key }}={{ val }}
+{%- elif val is sequence -%}
+{{ key }}={{ val | join(' ') }}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- if item['config_unit'] | length > 0 -%}
+[Unit]
+{% for key, val in item['config_unit'].items() %}
+{{ option(key,val) }}
+{% endfor %}
+{% endif %}
+
+{% if item['config_service'] | length > 0 %}
+[Service]
+{% for key, val in item['config_service'].items() %}
+{{ option(key,val) }}
+{% endfor %}
+{% endif %}
+
+{% if item['config_install'] | length > 0 %}
+[Install]
+{% for key, val in item['config_unit'].items() %}
+{{ option(key,val) }}
+{% endfor %}
+{% endif %}
