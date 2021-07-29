@@ -1,0 +1,19 @@
+---
+systemd_units:
+  - name: tcpdump
+    type: service
+
+    config_unit:
+      Description: "Capture network packets with tcpdump"
+      Documentation:
+        - "man:tcpdump(8)"
+      After:
+        - "network.target"
+      ConditionPathIsDirectory: "/tmp"
+
+    config_service:
+      ExecStart: "/usr/sbin/tcpdump -i {{ ansible_default_ipv4['interface'] }} -w /tmp/{{ ansible_default_ipv4['interface'] }}.pcap"
+      KillMode: process
+      WorkingDirectory: "/tmp"
+
+    config_install: {}

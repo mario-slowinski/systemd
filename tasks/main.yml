@@ -1,0 +1,6 @@
+---
+- name: "systemd config"
+  tags:
+    - systemd
+    - systemd.config
+  ansible.builtin.import_tasks: config.yml

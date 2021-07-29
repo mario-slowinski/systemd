@@ -1,0 +1,7 @@
+---
+systemd_config:
+  path: /etc/systemd/system
+  owner: root
+  group: root
+  mode: 0o644
+  setype: etc_d
