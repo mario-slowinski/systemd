@@ -4,4 +4,4 @@ systemd_config:
   owner: root
   group: root
   mode: 0o644
-  setype: etc_d
+  setype: etc_t
