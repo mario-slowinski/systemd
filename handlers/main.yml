@@ -2,3 +2,8 @@
 - name: "Reload systemd"
   ansible.builtin.systemd:
     daemon_reload: true
+    state: restarted
+    name: "{{ item['name'] }}"
+  loop: "{{ systemd_units }}"
+  loop_control:
+    label: "{{ item['name'] }}"
