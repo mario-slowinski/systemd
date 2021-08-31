@@ -46,19 +46,19 @@ Dependencies
 Tags
 ----
 
-* systemd.config
+* **systemd.config** - systemd config
 
-Example Playbook
-----------------
+Examples
+--------
 
-* `requirements.yml`
+* `requirements.yaml`
 
   ```yaml
   - name: systemd
     src: https://github.com/mario-slowinski/systemd
   ```
 
-* playbook usage
+* `playbook.yaml`
 
   ```yaml
   - hosts: servers
