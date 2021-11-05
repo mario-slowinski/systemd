@@ -22,7 +22,7 @@
 
 {% if item['config_install'] | length > 0 %}
 [Install]
-{% for key, val in item['config_unit'].items() %}
+{% for key, val in item['config_install'].items() %}
 {{ option(key,val) }}
 {% endfor %}
 {% endif %}
