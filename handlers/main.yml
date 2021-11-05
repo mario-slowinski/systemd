@@ -3,7 +3,8 @@
   ansible.builtin.systemd:
     daemon_reload: true
     state: restarted
-    name: "{{ item['name'] }}"
+    name: "{{ item['name'] }}{{ item['instance'] | default('') }}"
+    scope: "{{ item['scope'] | default(omit) }}"
   loop: "{{ systemd_units }}"
   loop_control:
-    label: "{{ item['name'] }}"
+    label: "{{ item['name'] }}{{ item['instance'] | default('') }}"
